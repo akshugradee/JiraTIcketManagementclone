@@ -1,0 +1,154 @@
+/* default styling */
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    padding: 0;
+}
+.toolbox-container{
+    height: 5rem;
+    /* no width because  div is block ele take full wwidth */
+    background-color:#2d3436;
+    /* flex make content adjustable in a container  */
+    display: flex;
+    /* element comes in center */
+    align-items: center;
+    
+}
+/* common changes in a parent */
+.toolbox-container > * {
+   margin-left: 4rem;
+    /* cure display to element  */
+    border-radius: 3px;
+}
+.toolbox-priority-container{
+    height: 3.5rem;
+    width: 16rem;
+    background-color: #1e272e;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+   
+}
+.action-btn-container{
+    height: 3.5rem;
+    width: 8rem;
+    background-color: #1e272e;
+    display: flex;
+    
+
+}
+.action-btn-container >*{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    color: #d2dae2;
+}
+
+
+.color{
+height: 1.5rem;
+width: 2.5rem;
+background-color: lightsalmon;
+border-radius: 2px;
+
+
+
+}
+.lightpink{
+    background-color: lightpink;
+}
+.lightblue{
+    background-color: lightblue;
+}
+.lightgreen{
+    background-color: lightgreen;
+}
+.lightblack{
+    background-color: #485460;
+}
+.action-btn-container > *:hover{
+    background-color: #808e9b;
+}
+.modal-container{
+    height: 50vh;
+    width: 60vh;
+    margin-top: 2rem;
+    
+    /* for sending it center */
+    /* now document flow se out */
+    position: absolute;
+     /*center of box  */
+    top:calc((100vh - 50vh) / 2);
+    left: calc((100vw - 60vh) /2);
+    display: none;
+
+
+}
+.modal-container >*{
+    border-radius: 2px;
+}
+.textarea-container{
+    height: 100%;
+    width: 80%;
+    border:none;
+    /* remove border auto */
+    outline: none;
+    background-color: #d2dae2;
+    resize: none;
+    padding: 2rem;
+    font-size: 1.5rem;
+
+
+}
+.priority-container{
+    width: 28%;
+    height: 100%;
+    background-color: #1e272e;
+    /* four box closely packed now divide but colwise */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    
+   
+
+}
+.priority-color{
+    height: 3rem;
+    width: 3.9rem;
+   
+    border-radius: 2px;
+    
+}
+.border{
+    border: 2px solid #d2dae2 ;
+}
+.ticket-container{
+    height: 12rem;
+    width: 16rem;
+    background-color: #dfe4ea;
+}
+.ticket-color{
+    height: 1rem;
+    background-color: lightcoral;
+}
+.ticket-id{
+    height: 2rem;
+    
+    padding: 0.4rem;
+}
+.task-area{
+ height: calc(100% - 1rem - 2rem);
+ 
+ padding: 0.3rem;
+}
+.main-container{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2rem;
+    gap:2rem;justify-content: center;
+}

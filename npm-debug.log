@@ -1,0 +1,29 @@
+0 info it worked if it ends with ok
+1 verbose cli [
+1 verbose cli   '/opt/homebrew/Cellar/node/17.3.0/bin/node',
+1 verbose cli   '/opt/homebrew/bin/npm',
+1 verbose cli   'run',
+1 verbose cli   'pack'
+1 verbose cli ]
+2 info using npm@3.10.0
+3 info using node@v17.3.0
+4 verbose config Skipping project config: /Users/akshaygrade/.npmrc. (matches userconfig)
+5 verbose stack Error: missing script: pack
+5 verbose stack     at run (/opt/homebrew/lib/node_modules/npm/lib/run-script.js:151:19)
+5 verbose stack     at /opt/homebrew/lib/node_modules/npm/lib/run-script.js:61:5
+5 verbose stack     at /opt/homebrew/lib/node_modules/npm/node_modules/read-package-json/read-json.js:356:5
+5 verbose stack     at checkBinReferences_ (/opt/homebrew/lib/node_modules/npm/node_modules/read-package-json/read-json.js:320:45)
+5 verbose stack     at final (/opt/homebrew/lib/node_modules/npm/node_modules/read-package-json/read-json.js:354:3)
+5 verbose stack     at then (/opt/homebrew/lib/node_modules/npm/node_modules/read-package-json/read-json.js:124:5)
+5 verbose stack     at ReadFileContext.<anonymous> (/opt/homebrew/lib/node_modules/npm/node_modules/read-package-json/read-json.js:308:29)
+5 verbose stack     at ReadFileContext.callback (/opt/homebrew/lib/node_modules/npm/node_modules/graceful-fs/graceful-fs.js:78:16)
+5 verbose stack     at FSReqCallback.readFileAfterOpen [as oncomplete] (node:fs:314:13)
+6 verbose cwd /Users/akshaygrade/Desktop/Jira ticket management
+7 error Darwin 21.2.0
+8 error argv "/opt/homebrew/Cellar/node/17.3.0/bin/node" "/opt/homebrew/bin/npm" "run" "pack"
+9 error node v17.3.0
+10 error npm  v3.10.0
+11 error missing script: pack
+12 error If you need help, you may report this error at:
+12 error     <https://github.com/npm/npm/issues>
+13 verbose exit [ 1, true ]

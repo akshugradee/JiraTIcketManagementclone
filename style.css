@@ -85,6 +85,7 @@ border-radius: 2px;
     top:calc((100vh - 50vh) / 2);
     left: calc((100vw - 60vh) /2);
     display: none;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 
 
 }
@@ -162,4 +163,37 @@ border-radius: 2px;
     font-size: 1.5rem;
     padding-right: 0.5rem;
     align-items: center;
+}
+@media screen and (min-width:425px) and (max-width:768px){
+    .modal-container{
+        width: 60vw;
+        left: calc((100vw - 60vw) /2);
+    }
+}
+@media screen and (max-width:426px) {
+    .modal-container{
+        width: 75vw;
+        height: 55vh;
+        left: calc((100vw - 75vw) /2);
+        flex-direction: column;
+       
+        top:calc((100vh - 55vh) / 2);
+        height: 75%;
+    }
+    .textarea-container{
+        width: 100%;
+    }
+    .priority-container{
+        flex-direction: row;
+        width: 100%;
+        height: 25%;
+    }
+    .priority-color{
+        width: 17%;
+    }
+    .toolbox-container> *{
+        margin-left: 2rem;
+        border-radius: 2px;
+    }
+    
 }

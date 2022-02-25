@@ -12,6 +12,15 @@ let textareacont=document.querySelector(".textarea-container");
 let toolboxcolors=document.querySelectorAll(".color");
 let ticketsArr=[];
 
+
+if(localStorage.getItem("jira_tickets")){
+    // retive my data and display
+    ticketsArr=JSON.parse(localStorage.getItem("jira_tickets"));
+    ticketsArr.forEach((ticketobj)=>{
+        createTicket(ticketobj.ticketcolor,ticketobj.tickettask,ticketobj.ticketID);
+    })
+    
+}
 for(let i=0;i<toolboxcolors.length;i++){
     toolboxcolors[i].addEventListener('click',(e)=>{
         let currenttoolboxcolor=toolboxcolors[i].classList[0];
@@ -122,27 +131,36 @@ function createTicket(ticketcolor,tickettask,ticketID){
     // create objj of ticket and add to array
     // push when no ticket id 
     if(!ticketID){
-    ticketsArr.push({ticketcolor,tickettask,ticketID:id})};
+    ticketsArr.push({ticketcolor,tickettask,ticketID:id})
+    localStorage.setItem("jira_tickets",JSON.stringify(ticketsArr))
+};
     maincont.appendChild(ticketcont);
-    handelremoval(ticketcont);
-    handellock(ticketcont);
-    handelcolor(ticketcont);
+    handelremoval(ticketcont,id);
+    handellock(ticketcont,id);
+    handelcolor(ticketcont,id);
 }
-function handelremoval(ticket){
+function handelremoval(ticket,id){
     // remove flag is true  ->remove
     ticket.addEventListener("click",(e)=>{
         if(removeflag){
+
+            let idx=getticketidx(id);
+            ticketsArr.splice(idx,1)
+            let stringticketarr=JSON.stringify(ticketsArr);
+            localStorage.setItem("jira_tickets",stringticketarr);
             ticket.remove();
         }
     })
    
 
 }
-function handellock(ticket){
+function handellock(ticket,id){
     let ticketlockele=ticket.querySelector(".lock-cont");
     let ticketlock=ticketlockele.children[0];
     let tickettaskarea=ticket.querySelector('.task-area');
     ticketlock.addEventListener('click',(e)=>{
+        let ticketidx=getticketidx(id);
+       
         if(ticketlock.classList.contains(lock)){
             ticketlock.classList.remove(lock);
             ticketlock.classList.add(lockopen);
@@ -157,12 +175,19 @@ function handellock(ticket){
             tickettaskarea.setAttribute("contenteditable","false");
 
         }
+        // modify data in local storage for ticket task
+    ticketsArr[ticketidx].tickettask=tickettaskarea.innerText;
+    localStorage.setItem("jira_tickets",JSON.stringify(ticketsArr));
 
     })
 }
-function handelcolor(ticket){
+
+
+function handelcolor(ticket,id){
     let ticektcolorss=ticket.querySelector(".ticket-color");
     ticektcolorss.addEventListener('click',(e)=>{
+         // getticketindx from the ticket array
+         let ticketidx=getticketidx(id);
     let currentticketcolor=ticektcolorss.classList[1];
     // find current color
     // acccesing index
@@ -175,9 +200,21 @@ function handelcolor(ticket){
     let newcolor=colors[newcoloridx];
     ticektcolorss.classList.remove(currentticketcolor);
     ticektcolorss.classList.add(newcolor);
+
+    // modfiy data in storage
+
+    ticketsArr[ticketidx].ticketcolor=newcolor;
+    localStorage.setItem("jira_tickets",JSON.stringify(ticketsArr));
+
     
 
     })
+}
+function getticketidx(id){
+    let ticketidx=ticketsArr.findIndex((ticketobj)=>{
+        return ticketobj.ticketID===id;
+    })
+return ticketidx;
 }
 function setmodaldefault(ticket){
     // remove modal
